@@ -11,7 +11,7 @@ def get_data():
     data = requests.get(url).json()
     climate_o.config(text=data["weather"][0]["main"])
     description_o.config(text=data["weather"][0]["description"])
-    temp_o.config(text=str(data["main"]["temp"]-273.15))
+    temp_o.config(text=str(int(data["main"]["temp"]-273.15)))
     pressure_o.config(text=data["main"]["pressure"])
 
 win = Tk()
@@ -84,4 +84,5 @@ pressure_o.place(x=250 , y=440 , height= 50 , width= 200)
 
 done_button = Button(win,text= "Done", font= ("Times New Roman",20,"bold"),command=get_data)
 done_button.place(x=180 , y=190 , height= 50 , width= 150)  
+
 win.mainloop()
